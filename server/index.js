@@ -53,7 +53,7 @@ app.get("/search", async (req, res) => {
 
   try {
     const response = await fetch(
-     `https://api.deezer.com/search?q=${encodeURIComponent(q)}&limit=5`
+     `https://api.deezer.com/search?q=${encodeURIComponent(q)}`
     );
     
     if (!response.ok) {
@@ -66,7 +66,7 @@ app.get("/search", async (req, res) => {
     const limited = {
       
       ...data,
-      data: data.data ? data.data.slice(0, 4) : []
+      data: data.data ? data.data.slice(0, 10) : []
     };
     
     res.json(limited);
